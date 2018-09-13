@@ -1,0 +1,52 @@
+html,body{
+  font-family: "Ubuntu Mono", "Trebuchet MS", Helvetica, sans-serif;
+}
+
+#header{
+  position: sticky;
+  top: 10px;
+  background-color: #35ACEC; 
+  padding: 5px;
+  color: #FBFCFC;
+  height: 140px;
+  border: 0px solid white;
+  border-radius: 5px;
+}
+
+#header-img{
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 2px;
+  float: right;
+  display: flex;
+  height: 134px;
+}
+
+#nav-bar{
+  float: left;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #35ACEC;
+  border: 0px solid;
+  border-radius:5px
+}
+
+#main{
+  text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+  border: 2px solid black;
+}
+
+th, td{
+  padding: 5px
+}
+
+#footer{
+  text-align: right;
+}
