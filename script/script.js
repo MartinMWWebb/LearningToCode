@@ -65,7 +65,6 @@ function createToDo(){
   var userDropdown = $("#userId-dropdown").val();
   var titleTextbox = $("#title-textbox").val();
   const url = 'https://jsonplaceholder.typicode.com/todos';
-  console.log(userDropdown, titleTextbox);
   fetch(url, {
     method: 'POST',
     body: JSON.stringify({
