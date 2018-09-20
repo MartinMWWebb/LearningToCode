@@ -1,11 +1,14 @@
-
+//Calls jsonplaceholder and loads list of user id's into dropdown
 function loadUserIds() {
-  let userDropdown = $("#userId-dropdown");
+  var userDropdown = $("#userId-dropdown");
+  //ensure dropdown is empty of values
   userDropdown.empty();
+  //Set defaut non selecable option to 'choose user'
   userDropdown.append('<option selected="true" disabled>Choose User</option>');
   userDropdown.prop('selectedIndex', 0);
+  //set URL to collect data from
   const url = 'https://jsonplaceholder.typicode.com/users';
-// Populate dropdown with list of userIds
+  //Populate dropdown with list of userIds
   $.getJSON(url, function (data) {
     var uniqueUserIds = $.unique(data.map(function (i) {
       return i.id;
@@ -16,6 +19,7 @@ function loadUserIds() {
   });
 };
 
+//Calls jsonplaceholder and loads list of todos into table
 function loadToDosToTable() {
   $.getJSON('https://jsonplaceholder.typicode.com/todos', function (data) {
     var toDos = [];
@@ -33,6 +37,7 @@ function loadToDosToTable() {
   });
 };
 
+//Work in progress to have multiple dropdowns working to filter data
 function filter(){
   var userData, completeData, userFilter, completeFilter
   
@@ -55,12 +60,34 @@ function filter(){
   }
 };
 
+//Creates a new to do on the server (faked by the API but logs to console)
+function createToDo(){
+  var userDropdown = $("#userId-dropdown").val();
+  var titleTextbox = $("#title-textbox").val();
+  const url = 'https://jsonplaceholder.typicode.com/todos';
+  console.log(userDropdown, titleTextbox);
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify({
+    userId: userDropdown,
+    title: titleTextbox,
+    completed: 'false'
+  }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  })
+  .then(response => response.json())
+  .then(json => console.log(json))
+};
+
 $(document).ready(function() {
+  //When page ready load userIds to dropdown and all todos into table.
   loadUserIds();
-  
   loadToDosToTable();
   
-    $("#userId-dropdown").on("change",function(){
+  //When userID is changed filter items in table
+  $("#userId-dropdown").on("change",function(){
     var a = $(this).find("option:selected").html();
     $("#toDoTable tr td:nth-child(2)").each(function(){
       if($(this).html() != a){
@@ -71,4 +98,5 @@ $(document).ready(function() {
       };
     });
   });
+  
 });
