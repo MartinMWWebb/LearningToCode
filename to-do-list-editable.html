@@ -3,6 +3,7 @@
   <link rel="stylesheet" type="text/css" href="style/style.css">
   <script src="script/jquery-3.3.1.js" type="text/javascript"></script>
   <script src="script/script.js" type="text/javascript"></script>
+  <link rel="icon" type="image/jpg" href="images/favicon.jpg">
   <title>To Do List</title>
 </head>
 
@@ -34,10 +35,10 @@
     <h2>To Do List</h2>
       <label for="userId">UserId</label>
       <select id="userId-dropdown" name="userId"></select>
-      <p></p>
-    <table id="toDoTable" class="toDoTable">
+      <button id="saveBtn" name="saveBtn" onclick="getAllRows();">AllRows</button>
+      <button id="saveBtn" name="saveBtn" onclick="updateToDos();">Update</button>
+    <table id="toDoTable-editable" class="toDoTable">
     <tr>
-      <th>#</th>
       <th>User Id</th>
       <th>Title</th>
       <th>Completed</th>
